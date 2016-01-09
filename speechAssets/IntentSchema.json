@@ -1,0 +1,31 @@
+{
+  "intents": [
+    {
+      "intent": "MyColorIsIntent",
+      "slots": [
+        {
+          "name": "Color",
+          "type": "LIST_OF_COLORS"
+        }
+      ]
+    },
+    {
+      "intent": "WhatsMyColorIntent"
+    },
+    {
+      "intent": "WhatsMyLivingRoomTemperature"
+    },
+    {
+    	"intent": "WhatsTheTemperature",
+      "slots": [
+        {
+          "name": "Where",
+          "type": "LIST_OF_LOCATIONS"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
