@@ -35,7 +35,7 @@ var storage = (function () {
                 console.log(err);
               }
               else {
-                callback(data);
+                callback(data.Item);
               }
             });
         }

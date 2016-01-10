@@ -10,14 +10,20 @@
 
 'use strict';
 var textHelper = require('./textHelper'),
-    storage = require('./storage');
+    storage = require('./storage'),
+    api = require('./api');
 
 var registerIntentHandlers = function (intentHandlers, skillContext) {
     intentHandlers.WhatsTheTemperature = function (intent, session, response) {
       storage.loadConfig(session, function (config) {
-        response.tell("Executing WhatsTheTemperature Intent");
-      });
+        var where = intent.slots.Where.value;
+        var deviceId = config.devices[where];
+        var nestToken = config.token;
 
+        api.getDevice(nestToken, deviceId, function (device) {
+          response.tell("Your " + where + " temperature is " + device.ambient_temperature_f + " degrees.");
+        });
+      });
     };
 
     intentHandlers['AMAZON.HelpIntent'] = function (intent, session, response) {
